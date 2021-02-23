@@ -1,5 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
+import Card from './Card';
+import Scoreboard from './Scoreboard';
 
 function App() {
   return (
@@ -17,7 +19,9 @@ function App() {
         >
           Learn React
         </a>
+        <Scoreboard />
       </header>
+      <Card name="haha"/>
     </div>
   );
 }
