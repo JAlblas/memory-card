@@ -1,13 +1,10 @@
 import React, { useState } from "react";
 
 const Scoreboard = (props) => {
-    const [score, setScore] = useState(0);
-
-    const incrementScore = () => {
-        setScore(score + 1);
-    };
-
-    return <p>{score}</p>
+    return (<div id="scoreboard">
+        <p>{props.score}</p>
+        <p>{props.highscore}</p>
+    </div>)
 }
 
 export default Scoreboard;

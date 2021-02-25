@@ -1,27 +1,21 @@
-import logo from './logo.svg';
+
 import './App.css';
-import Card from './Card';
+import React, { useState, useEffect } from "react";
 import Scoreboard from './Scoreboard';
+import Gameboard from './Gameboard';
 
 function App() {
+  const [score, setScore] = useState(0);
+  const [highscore, setHighscore] = useState(0);
+
+  const incrementScore = () => {
+    setScore(score + 1);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <Scoreboard />
-      </header>
-      <Card name="haha"/>
+      <Scoreboard score={score} highscore={highscore}/>
+      <Gameboard />
     </div>
   );
 }

@@ -1,38 +1,38 @@
 .App {
   text-align: center;
+  width: 100%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.card {
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+img {
+  max-width: 100%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+#gameboard {
+  background-color: bisque;
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(3, 1fr);
 }
 
-.App-link {
-  color: #61dafb;
+#gameboard p {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 1.1em;
+  font-weight: bold;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#scoreboard {
+  background-color: orange;
+}
+
+#scoreboard p {
+  font-size: 2em;
 }
