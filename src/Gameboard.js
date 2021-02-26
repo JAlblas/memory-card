@@ -20,20 +20,23 @@ async function getCardData() {
 
 const Gameboard = (props) => {
 
-    const [cards, setCards] = useState([
-    ]);
+    const [cards, setCards] = useState([]);
+    const [selectedCards, setSelectedCards] = useState([]);
 
     useEffect(() => {
         getCardData().then((data) => {
-            console.log("DATA INCOMING!");
-            console.log(data);
             let filteredData = data.Classic.filter(card => card.img)
-            setCards(filteredData);
+            selectCards(filteredData);
         }).catch(e => console.log(e));
     }, []);
 
+    const selectCards = (cards) => {
+        let maxStartIndex = cards.length - 10;
+        let startIndex = Math.random() * maxStartIndex;
+        setCards(cards.slice(startIndex, startIndex + 10));
+    }
+    
     const randomizeCards = () => {
-        console.log("randomizing cards");
         let tempCards = [...cards];
         for (let i = tempCards.length - 1; i > 0; i--) {
             let j = Math.floor(Math.random() * i);
@@ -44,15 +47,20 @@ const Gameboard = (props) => {
         setCards(tempCards);
     };
 
-    const handleClick = () => {
+    const handleClick = (e) => {
         console.log("Clicked!");
+        console.log(e.target.id);
+        let newSelectedCards = [...selectedCards];
+        newSelectedCards.push(e.target.id);
+        setSelectedCards(newSelectedCards);
+        randomizeCards();
     };
 
     return (
         <div id="gameboard">
         {cards.map(card => (
             <Card
-              handleClick={randomizeCards}
+              handleClick={handleClick}
               id={card.cardId}
               key={card.cardId}
               name={card.name}

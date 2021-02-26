@@ -1,13 +1,28 @@
+body {
+  background-color: #475285;
+}
+
 .App {
   text-align: center;
-  width: 100%;
+  max-width: 800px;
+  margin: 25px auto;
+  border: 1px #EFEFEF solid;
+  background-color: #FFF;
+  border-radius: 10px;
+  padding: 25px;
+}
+
+p {
+  margin: 0;
 }
 
 .card {
   display: inline-block;
-  border: 1px solid black;
-  border-radius: 5px;
-  margin: 10px;
+  transition: transform .5s ease;
+}
+
+.card :hover{
+  transform: scale(1.1);
 }
 
 img {
@@ -15,11 +30,10 @@ img {
 }
 
 #gameboard {
-  background-color: bisque;
   display: grid;
   width: 100%;
-  grid-template-columns: repeat(8, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(2, 1fr);
 }
 
 #gameboard p {
@@ -30,7 +44,7 @@ img {
 }
 
 #scoreboard {
-  background-color: orange;
+
 }
 
 #scoreboard p {

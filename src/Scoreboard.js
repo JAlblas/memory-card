@@ -2,8 +2,8 @@ import React, { useState } from "react";
 
 const Scoreboard = (props) => {
     return (<div id="scoreboard">
-        <p>{props.score}</p>
-        <p>{props.highscore}</p>
+        <p>Score: {props.score}</p>
+        <p>High score: {props.highscore}</p>
     </div>)
 }
 
