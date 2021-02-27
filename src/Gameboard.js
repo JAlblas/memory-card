@@ -58,6 +58,8 @@ const Gameboard = (props) => {
         let cardId = e.target.id;
         if (selectedCards.includes(cardId)) {
             console.log("GAME OVER!");
+            setSelectedCards([]);
+            props.resetGame();
         } else {
             let newSelectedCards = [...selectedCards];
             newSelectedCards.push(cardId);

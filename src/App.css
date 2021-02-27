@@ -1,5 +1,6 @@
 body {
   background-color: #475285;
+  font-family: 'Noto Sans', sans-serif;
 }
 
 .App {
@@ -7,7 +8,7 @@ body {
   max-width: 800px;
   margin: 25px auto;
   border: 1px #EFEFEF solid;
-  background-color: #FFF;
+  background-color: rgb(255, 255, 255);
   border-radius: 10px;
   padding: 25px;
 }
@@ -44,9 +45,13 @@ img {
 }
 
 #scoreboard {
-
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25px;
 }
 
 #scoreboard p {
   font-size: 2em;
+  align-self: center;
+  font-weight: bold;
 }
