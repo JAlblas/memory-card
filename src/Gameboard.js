@@ -31,16 +31,17 @@ const Gameboard = (props) => {
                 selectCards(filteredData);
             }).catch(e => console.log(e));
           } else {
-            console.log(localStorage.getItem('cards'));
             selectCards(JSON.parse(localStorage.getItem('cards')));
           }
 
     }, []);
 
-    const selectCards = (cards) => {
-        let maxStartIndex = cards.length - 10;
-        let startIndex = Math.random() * maxStartIndex;
-        setCards(cards.slice(startIndex, startIndex + 10));
+    const selectCards = (cardsInput) => {
+        console.log(cardsInput);
+        let maxStartIndex = cardsInput.length - 10;
+        let startIndex = Math.floor(Math.random() * maxStartIndex);
+        console.log(cardsInput.slice(startIndex, startIndex + 10));
+        setCards(cardsInput.slice(startIndex, startIndex + 10));
     }
     
     const randomizeCards = () => {
@@ -57,9 +58,10 @@ const Gameboard = (props) => {
     const handleClick = (e) => {
         let cardId = e.target.id;
         if (selectedCards.includes(cardId)) {
-            console.log("GAME OVER!");
             setSelectedCards([]);
             props.resetGame();
+            selectCards(JSON.parse(localStorage.getItem('cards')));
+            
         } else {
             let newSelectedCards = [...selectedCards];
             newSelectedCards.push(cardId);
@@ -70,20 +72,27 @@ const Gameboard = (props) => {
         randomizeCards();
     };
 
+    if (cards.length === 0) {
+        return <p>Loading cards...</p>;
+    }
     return (
-        <div id="gameboard">
-        {cards.map(card => (
-            <Card
-              handleClick={handleClick}
-              id={card.cardId}
-              key={card.cardId}
-              name={card.name}
-              image={card.img}
-              text={card.text}
-            />
-          ))
-        }
+        <div>
+            <div id="gameboard">
+                {cards.map(card => (
+                    <Card
+                    handleClick={handleClick}
+                    id={card.cardId}
+                    key={card.cardId}
+                    name={card.name}
+                    image={card.img}
+                    text={card.text}
+                    />
+                ))
+                }
+            </div>
         </div>
+
+
     )
 }
 

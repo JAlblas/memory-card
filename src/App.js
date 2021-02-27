@@ -8,7 +8,7 @@ function App() {
   const [score, setScore] = useState(0);
   const [highscore, setHighscore] = useState(0);
 
-  useEffect(() => {
+  useEffect((score, highscore) => {
     if (score > highscore) {
       setHighscore(score);
     }
