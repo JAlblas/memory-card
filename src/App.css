@@ -37,13 +37,6 @@ img {
   grid-template-rows: repeat(2, 1fr);
 }
 
-#gameboard p {
-  margin-top: 0px;
-  margin-bottom: 0px;
-  font-size: 1.1em;
-  font-weight: bold;
-}
-
 #scoreboard {
   display: flex;
   flex-direction: column;
@@ -54,4 +47,9 @@ img {
   font-size: 2em;
   align-self: center;
   font-weight: bold;
+}
+
+#scoreboard p:nth-child(2) {
+  border-bottom: 2px solid #000;
+  padding-bottom: 10px;
 }

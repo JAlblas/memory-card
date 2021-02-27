@@ -37,11 +37,11 @@ const Gameboard = (props) => {
     }, []);
 
     const selectCards = (cardsInput) => {
-        console.log(cardsInput);
-        let maxStartIndex = cardsInput.length - 10;
+        let newCards = [...cardsInput];
+        let maxStartIndex = newCards.length - 10;
         let startIndex = Math.floor(Math.random() * maxStartIndex);
-        console.log(cardsInput.slice(startIndex, startIndex + 10));
-        setCards(cardsInput.slice(startIndex, startIndex + 10));
+        console.log(newCards.slice(startIndex, startIndex + 10));
+        setCards(newCards.slice(startIndex, startIndex + 10));
     }
     
     const randomizeCards = () => {
@@ -61,15 +61,13 @@ const Gameboard = (props) => {
             setSelectedCards([]);
             props.resetGame();
             selectCards(JSON.parse(localStorage.getItem('cards')));
-            
         } else {
             let newSelectedCards = [...selectedCards];
             newSelectedCards.push(cardId);
             setSelectedCards(newSelectedCards);
             props.incrementScore();
-        }
-
-        randomizeCards();
+            randomizeCards();
+        }        
     };
 
     if (cards.length === 0) {
