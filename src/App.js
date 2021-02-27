@@ -15,7 +15,7 @@ function App() {
   return (
     <div className="App">
       <Scoreboard score={score} highscore={highscore}/>
-      <Gameboard />
+      <Gameboard incrementScore={incrementScore}/>
     </div>
   );
 }

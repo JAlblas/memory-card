@@ -24,10 +24,17 @@ const Gameboard = (props) => {
     const [selectedCards, setSelectedCards] = useState([]);
 
     useEffect(() => {
-        getCardData().then((data) => {
-            let filteredData = data.Classic.filter(card => card.img)
-            selectCards(filteredData);
-        }).catch(e => console.log(e));
+        if(!localStorage.getItem('cards')) {
+            getCardData().then((data) => {
+                let filteredData = data.Classic.filter(card => card.img);
+                localStorage.setItem('cards', JSON.stringify(filteredData));
+                selectCards(filteredData);
+            }).catch(e => console.log(e));
+          } else {
+            console.log(localStorage.getItem('cards'));
+            selectCards(JSON.parse(localStorage.getItem('cards')));
+          }
+
     }, []);
 
     const selectCards = (cards) => {
@@ -48,11 +55,16 @@ const Gameboard = (props) => {
     };
 
     const handleClick = (e) => {
-        console.log("Clicked!");
-        console.log(e.target.id);
-        let newSelectedCards = [...selectedCards];
-        newSelectedCards.push(e.target.id);
-        setSelectedCards(newSelectedCards);
+        let cardId = e.target.id;
+        if (selectedCards.includes(cardId)) {
+            console.log("GAME OVER!");
+        } else {
+            let newSelectedCards = [...selectedCards];
+            newSelectedCards.push(cardId);
+            setSelectedCards(newSelectedCards);
+            props.incrementScore();
+        }
+
         randomizeCards();
     };
 
