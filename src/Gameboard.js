@@ -40,7 +40,6 @@ const Gameboard = (props) => {
         let newCards = [...cardsInput];
         let maxStartIndex = newCards.length - 10;
         let startIndex = Math.floor(Math.random() * maxStartIndex);
-        console.log(newCards.slice(startIndex, startIndex + 10));
         setCards(newCards.slice(startIndex, startIndex + 10));
     }
     
